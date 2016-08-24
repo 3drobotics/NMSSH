@@ -544,10 +544,11 @@
         NMSSHLogInfo(@"Failed to get authentication method for host %@:%@", self.host, self.port);
         return nil;
     }
-
+    
     NSString *authList = [NSString stringWithCString:userauthlist encoding:NSUTF8StringEncoding];
     NMSSHLogVerbose(@"User auth list: %@", authList);
-
+    
+    free(userauthlist);
     return [authList componentsSeparatedByString:@","];
 }
 
